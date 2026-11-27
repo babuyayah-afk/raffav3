@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="rafa-api-base" content="">
+  <title>Administrator sign-in | RaFFA Events</title>
+  <link rel="stylesheet" href="/admin/login.css">
+  <script src="/admin/login.js" defer></script>
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <a class="login-brand" href="/" aria-label="RaFFA Events home">RaFFA <span>ADMIN</span></a>
+      <p class="login-eyebrow">SECURE ADMINISTRATION</p>
+      <h1 id="loginTitle">Administrator sign-in</h1>
+      <p class="login-description">Sign in with your administrator account and verify your authenticator to continue.</p>
+      <form id="adminLoginForm">
+        <label for="adminIdentity">Admin email</label>
+        <input id="adminIdentity" name="email" type="email" autocomplete="username" maxlength="254" required>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required>
+        <button type="submit" id="adminLoginSubmit">Sign in</button>
+      </form>
+      <form id="adminMfaForm" hidden>
+        <div id="adminMfaSetup" hidden>
+          <p>Scan this QR code using your authenticator app.</p>
+          <img id="adminMfaQr" alt="Authenticator enrollment QR code">
+          <p>Manual setup key: <code id="adminMfaSecret"></code></p>
+        </div>
+        <label for="adminMfaCode">Authenticator or recovery code</label>
+        <input id="adminMfaCode" name="code" type="text" autocomplete="one-time-code" inputmode="text"
+          pattern="(?:[0-9]{6}|[A-Z0-9]{5}-[A-Z0-9]{5})" minlength="6" maxlength="11" required>
+        <small>Enter six digits, or an uppercase recovery code in XXXXX-XXXXX format.</small>
+        <button type="submit" id="adminMfaSubmit">Verify and continue</button>
+      </form>
+      <section id="adminRecovery" hidden>
+        <h2>Save your recovery codes</h2>
+        <p>These are shown once. Store them securely before continuing.</p>
+        <pre id="adminRecoveryCodes"></pre>
+        <button type="button" id="adminRecoveryContinue">Continue to dashboard</button>
+      </section>
+      <p id="adminLoginStatus" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+</html>

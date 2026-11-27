@@ -1,0 +1,92 @@
+.inbox-view { padding: 5px 0 0; }
+.inbox-heading { margin-bottom: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.inbox-heading h1 { margin: 0; font-size: 19px; line-height: 1.3; }
+.inbox-heading p { margin: 4px 0 0; color: var(--muted); font-size: 9px; }
+.inbox-heading-actions { display: flex; align-items: center; gap: 8px; }
+.inbox-unread-count { min-width: 22px; padding: 3px 7px; border-radius: 12px; color: #fff; background: var(--orange); font-size: 9px; text-align: center; }
+.inbox-nav-badge { min-width: 16px; height: 16px; margin-left: auto; padding: 0 4px; border-radius: 9px; color: #fff; background: var(--orange); font-size: 8px; line-height: 16px; text-align: center; }
+.inbox-toolbar { margin-bottom: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 7px; display: grid; grid-template-columns: minmax(160px, 1.5fr) repeat(4, minmax(100px, .7fr)) auto; gap: 7px; background: var(--card); box-shadow: var(--card-shadow); }
+.inbox-toolbar input, .inbox-toolbar select, .inbox-update-form select, .inbox-update-form input, .inbox-detail-section select, .inbox-detail-section textarea { min-width: 0; min-height: 31px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); }
+.inbox-toolbar label { min-width: 0; display: grid; gap: 3px; color: var(--muted); font-size: 8px; }
+.inbox-toolbar .inbox-search { align-self: end; }
+.inbox-workspace { min-width: 0; display: grid; grid-template-columns: minmax(360px, 1.1fr) minmax(300px, .9fr); gap: 10px; align-items: start; }
+.inbox-list-panel, .inbox-detail-panel { min-width: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--card); box-shadow: var(--card-shadow); }
+.inbox-list-heading { min-height: 38px; padding: 8px 11px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.inbox-list-heading h2, .inbox-detail-section h3 { margin: 0; font-size: 11px; }
+.inbox-list-heading span { color: var(--muted); font-size: 8px; }
+.inbox-table-scroll { width: 100%; overflow-x: auto; }
+.inbox-table { width: 100%; border-collapse: collapse; font-size: 8px; text-align: left; }
+.inbox-table th { padding: 8px 6px; color: var(--muted); background: color-mix(in srgb, var(--card) 92%, var(--ink)); font-size: 7px; font-weight: 600; white-space: nowrap; }
+.inbox-table td { min-width: 58px; padding: 8px 6px; border-top: 1px solid var(--line); vertical-align: middle; }
+.inbox-table tr.is-selected { background: var(--orange-soft); }
+.inbox-customer-cell { min-width: 130px !important; }
+.inbox-customer-cell small { display: block; max-width: 150px; margin-top: 2px; overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
+.inbox-open-item { max-width: 150px; padding: 0; border: 0; overflow: hidden; color: var(--ink); background: transparent; font-size: 8px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.inbox-open-item:hover { color: var(--orange-dark); }
+.inbox-unread-dot { display: inline-block; margin-top: 4px; padding: 1px 5px; border-radius: 6px; color: #8d4000; background: var(--orange-soft); font-size: 7px; }
+.inbox-followup-due { color: #a44900; font-weight: 650; white-space: nowrap; }
+.inbox-empty-cell { padding: 24px !important; color: var(--muted); text-align: center; }
+.inbox-pagination { min-height: 38px; padding: 6px 10px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 8px; }
+.inbox-pagination div { display: flex; gap: 5px; }
+.inbox-pagination button, .inbox-secondary-button { min-height: 27px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); font-size: 8px; }
+.inbox-pagination button:disabled, .inbox-secondary-button:disabled { opacity: .5; cursor: not-allowed; }
+.inbox-detail-panel { max-height: calc(100dvh - 105px); overflow: auto; }
+.inbox-detail-empty { padding: 35px 20px; color: var(--muted); text-align: center; }
+.inbox-detail-heading { padding: 12px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; }
+.inbox-detail-heading h2 { margin: 2px 0; font-size: 14px; }
+.inbox-detail-contact { margin: 2px 0; color: var(--muted); font-size: 9px; }
+.inbox-contact-actions { display: flex; flex-direction: column; gap: 5px; }
+.inbox-contact-action { padding: 5px 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); font-size: 8px; text-align: center; text-decoration: none; white-space: nowrap; }
+.inbox-contact-action:hover { border-color: var(--orange); color: var(--orange-dark); }
+.inbox-contact-action.is-disabled { opacity: .45; cursor: not-allowed; }
+.inbox-detail-section { padding: 11px 12px; border-bottom: 1px solid var(--line); }
+.inbox-detail-section > h3 { margin-bottom: 8px; }
+.inbox-update-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(120px, .7fr) auto; align-items: end; gap: 7px; }
+.inbox-update-form label { display: grid; gap: 4px; color: var(--muted); font-size: 8px; }
+.inbox-update-form .inbox-reason-field { grid-column: 1 / -1; }
+.inbox-primary-button { min-height: 31px; padding: 6px 10px; border: 0; border-radius: 5px; color: white; background: var(--orange); font-size: 8px; font-weight: 600; }
+.inbox-primary-button:hover { background: var(--orange-dark); }
+.inbox-primary-button:disabled { opacity: .55; cursor: progress; }
+.inbox-message-text { margin: 0 0 8px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.inbox-detail-fields { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.inbox-detail-fields div { min-width: 0; }
+.inbox-detail-fields dt { color: var(--muted); font-size: 8px; }
+.inbox-detail-fields dd { margin: 2px 0 0; font-size: 9px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.inbox-status-reason, .inbox-followup-callout { padding: 7px; border-radius: 5px; color: #874400; background: var(--orange-soft); font-size: 8px; }
+.inbox-attachments { margin: 8px 0 0; padding-left: 16px; }
+.inbox-attachments li { margin: 4px 0; }
+.inbox-attachments small { margin-left: 6px; color: var(--muted); }
+.inbox-template-preview { width: 100%; margin-top: 6px; resize: vertical; font: inherit; }
+.inbox-detail-section > .inbox-secondary-button { margin-top: 6px; }
+.inbox-note-form { display: grid; gap: 6px; }
+.inbox-note-form textarea { width: 100%; min-height: 64px; resize: vertical; font: inherit; }
+.inbox-note-form .inbox-primary-button { justify-self: end; }
+.inbox-timeline { margin: 12px 0 0; padding: 0 0 0 16px; }
+.inbox-timeline li { padding: 0 0 12px 3px; }
+.inbox-timeline strong, .inbox-timeline small { display: block; }
+.inbox-timeline strong { font-size: 8px; }
+.inbox-timeline small { margin-top: 2px; color: var(--muted); font-size: 7px; }
+.inbox-timeline p { margin: 4px 0 0; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.inbox-status { min-height: 16px; margin: 5px 0 0; color: var(--muted); font-size: 8px; }
+.inbox-status[data-state="error"], .inbox-error { color: #b42318; }
+.inbox-status[data-state="success"] { color: #157347; }
+.inbox-loading { padding: 20px; color: var(--muted); }
+.inbox-detail-status { margin: 0; padding: 0 12px 8px; color: var(--muted); font-size: 8px; }
+
+@media (max-width: 900px) {
+  .inbox-toolbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .inbox-toolbar .inbox-search { grid-column: span 2; }
+  .inbox-workspace { grid-template-columns: minmax(0, 1fr); }
+  .inbox-detail-panel { max-height: none; }
+}
+@media (max-width: 560px) {
+  .inbox-heading { align-items: center; }
+  .inbox-heading h1 { font-size: 16px; }
+  .inbox-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inbox-toolbar .inbox-search { grid-column: 1 / -1; }
+  .inbox-detail-heading { flex-direction: column; }
+  .inbox-contact-actions { flex-direction: row; }
+  .inbox-update-form { grid-template-columns: 1fr; }
+  .inbox-update-form .inbox-reason-field { grid-column: auto; }
+  .inbox-detail-fields { grid-template-columns: minmax(0, 1fr); }
+}

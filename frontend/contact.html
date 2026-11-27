@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3EEE3">
+  <meta name="rafa-api-base" content="">
+  <title>Get in Touch — RAFA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/header.css">
+  <link rel="stylesheet" href="assets/styles/index.css">
+  <link rel="stylesheet" href="assets/styles/footer.css">
+  <link rel="stylesheet" href="assets/styles/public-mobile.css">
+  <link rel="stylesheet" href="assets/styles/contact.css">
+  <link rel="stylesheet" href="assets/styles/shared-shell.css">
+  <link rel="stylesheet" href="assets/styles/elan-theme.css">
+  <script src="assets/js/media.js" defer></script>
+  <script src="assets/js/shared-shell.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+  <script src="assets/js/heroMedia.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/public-mobile.js" defer></script>
+  <script src="assets/js/contact.js" defer></script>
+</head>
+<body>
+  <header id="siteHeader"></header>
+
+  <main>
+    <section class="contact-hero" id="contactIntro">
+      <div class="wrap contact-hero-inner">
+        <span class="page-symbol contact-page-symbol" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 3v-14Z"/><path d="M8 10h8M8 13.5h5"/></svg>
+        </span>
+        <p class="eyebrow">Let’s make it happen</p>
+        <h1>Tell us what<br><em>you have in mind.</em></h1>
+        <p>Planning an event, choosing a cake, or looking for something to wear? Answer a few quick questions, one at a time.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contactFormSection">
+      <div class="wrap contact-layout">
+        <aside class="contact-aside">
+          <p class="eyebrow">Contact RAFA</p>
+          <h2>Every good plan starts with a conversation.</h2>
+          <p>Share a message so we can help with your inquiry. Reference images are optional.</p>
+          <div class="contact-note">
+            <span class="contact-note-mark" aria-hidden="true">R</span>
+            <p><strong>What happens next?</strong><br>Your inquiry is saved securely so the RAFA team can review and follow up.</p>
+          </div>
+        </aside>
+
+        <form class="contact-form" id="contactForm">
+          <label class="contact-honeypot" aria-hidden="true" tabindex="-1">Leave this field empty<input id="contactWebsite" name="website" type="text" autocomplete="off" tabindex="-1"></label>
+          <div class="contact-form-heading">
+            <div>
+              <p class="eyebrow">Your inquiry</p>
+              <h2>Let’s get started.</h2>
+            </div>
+            <span class="contact-demo-badge">A few quick steps</span>
+          </div>
+          <div class="contact-stepper">
+            <span id="contactStepCount"></span>
+            <progress id="contactProgress" max="1" value="0" aria-label="Inquiry progress"></progress>
+          </div>
+          <div class="contact-step-content" id="contactStepContent" aria-live="polite"></div>
+          <div class="contact-captcha" id="contactCaptcha" aria-label="Security check"></div>
+          <div class="contact-step-actions" id="contactStepActions">
+            <button class="contact-step-back" id="contactStepBack" type="button" hidden>Back</button>
+            <button class="btn btn-fill contact-submit" id="contactStepNext" type="button">Continue</button>
+            <button class="btn btn-fill contact-submit" id="contactStepSubmit" type="submit" hidden>Send inquiry</button>
+          </div>
+          <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="shared-footer"></footer>
+</body>
+</html>

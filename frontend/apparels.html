@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3EEE3">
+<meta name="rafa-api-base" content="">
+<title>RAFA — Fashion Edit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles/header.css">
+<link rel="stylesheet" href="assets/styles/apparels.css">
+<link rel="stylesheet" href="assets/styles/footer.css">
+<link rel="stylesheet" href="assets/styles/public-mobile.css">
+<link rel="stylesheet" href="assets/styles/shared-shell.css">
+<link rel="stylesheet" href="assets/styles/elan-theme.css">
+<script src="assets/js/currency.js" defer></script>
+<script src="assets/js/media.js" defer></script>
+<script src="assets/js/shared-shell.js" defer></script>
+<script src="assets/js/heroMedia.js" defer></script>
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/public-mobile.js" defer></script>
+<script src="assets/js/siteContent.js" defer></script>
+<script src="assets/js/publicContent.js" defer></script>
+<script src="assets/js/apparel.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
+</head>
+<body>
+
+<header id="siteHeader"></header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="page-symbol apparel-page-symbol" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a2 2 0 1 0-2-2"/><path d="M12 6 3.5 12v2.5h17V12L12 6Z"/><path d="M6 14.5V21h12v-6.5"/></svg>
+      </span>
+      <p class="eyebrow">New collection</p>
+      <h1>Elevate your everyday style.</h1>
+      <p>Timeless pieces crafted for comfort, designed for elegance, and made for you.</p>
+      <div class="hero-actions">
+        <a href="#catalog" class="btn btn-dark">Shop now <span aria-hidden="true">→</span></a>
+        <a href="#editorial" class="lookbook-link"><span aria-hidden="true">▶</span> Watch lookbook</a>
+      </div>
+      <ul class="hero-meta" aria-label="Shopping benefits">
+        <li><span aria-hidden="true">◇</span><span><strong>Size options</strong><small>Choose per piece</small></span></li>
+        <li><span aria-hidden="true">↗</span><span><strong>Fit guidance</strong><small>Ask about a style</small></span></li>
+        <li><span aria-hidden="true">▢</span><span><strong>Order preview</strong><small>Mock shopping UI</small></span></li>
+      </ul>
+    </div>
+
+    <div class="hero-visual">
+      <img class="hero-image" data-media-id="apparel-model" data-media-width="1400" data-media-quality="85" alt="Model wearing a relaxed neutral spring outfit" loading="eager" fetchpriority="high" decoding="async">
+      <div class="apparel-sales-card" aria-label="1,240 pieces sold this week">
+        <span>Pieces sold this week</span>
+        <strong>1,240 <small>pieces</small></strong>
+        <div class="apparel-sales-bars" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <div class="apparel-activity-card" aria-label="Store activity this week">
+        <div class="apparel-activity-heading"><strong>Fresh this week</strong><time>Today, 4:32 AM</time></div>
+        <ul>
+          <li><span class="activity-check" aria-hidden="true">✓</span><span>New dresses added to the shop</span><time>3:41 AM</time></li>
+          <li><span class="activity-check" aria-hidden="true">✓</span><span>Fitting appointment confirmed</span><time>3:58 AM</time></li>
+          <li><span class="activity-check" aria-hidden="true">✓</span><span>Order #1042 shipped</span><time>4:10 AM</time></li>
+          <li class="activity-progress"><span class="activity-check" aria-hidden="true">!</span><span>Restocking size M tops</span><time>in progress</time></li>
+        </ul>
+      </div>
+      <div class="hero-pagination" aria-label="Collection 1 of 3"><strong>01</strong><span></span><small>02<br>03</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="category-rail wrap" aria-label="Shop categories">
+  <div class="category-grid">
+    <button class="category-card active" type="button" data-category="all"><img data-media-id="apparel-people" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Women</strong></button>
+    <button class="category-card" type="button" data-category="clothes"><img data-media-id="apparel-menswear" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Men</strong></button>
+    <button class="category-card" type="button" data-category="clothes"><img data-media-id="apparel-model" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Dresses</strong></button>
+    <button class="category-card" type="button" data-category="clothes"><img data-media-id="apparel-tops" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Tops</strong></button>
+    <button class="category-card" type="button" data-category="shoes"><img data-media-id="apparel-shoes" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Shoes</strong></button>
+    <button class="category-card" type="button" data-category="handbags"><img data-media-id="apparel-bag" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Bags</strong></button>
+    <button class="category-card" type="button" data-category="accessories"><img data-media-id="apparel-accessories" data-media-width="180" data-media-quality="80" alt="" loading="lazy" decoding="async"><strong>Accessories</strong></button>
+    <button class="category-card sale-category" type="button" data-category="all"><span>SALE</span><strong>Sale</strong></button>
+  </div>
+</section>
+
+<section class="categories wrap" id="editorial">
+  <div class="section-head between">
+    <div><p class="eyebrow">Shop by category</p><h2>Find your<br>perfect style</h2></div>
+    <a href="#catalog" class="text-link">View all categories <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="editorial-grid category-feature-grid">
+    <a class="editorial-card category-feature image-women" href="#catalog" data-category="clothes"><span>Women’s collection<small>Explore now <b>→</b></small></span></a>
+    <a class="editorial-card category-feature image-men" href="#catalog" data-category="clothes"><span>Men’s collection<small>Explore now <b>→</b></small></span></a>
+    <a class="editorial-card category-feature image-dresses" href="#catalog" data-category="clothes"><span>Dresses<small>Explore now <b>→</b></small></span></a>
+    <a class="editorial-card category-feature image-accessories" href="#catalog" data-category="accessories"><span>Accessories<small>Explore now <b>→</b></small></span></a>
+  </div>
+</section>
+
+<section class="campaigns wrap" aria-label="Featured collections">
+  <article class="campaign-card campaign-sale">
+    <div><p class="eyebrow">Considered essentials</p><h2>Find a piece<br>to make your own</h2><a href="#catalog" class="btn btn-dark" data-category="all">Explore the edit <span aria-hidden="true">→</span></a></div>
+    <img data-media-id="apparel-model" data-media-width="520" data-media-quality="85" alt="" loading="lazy">
+  </article>
+  <article class="campaign-card campaign-new">
+    <div><p class="eyebrow">New arrivals</p><h2>Fresh styles<br>just landed</h2><a href="#catalog" class="btn btn-dark">Explore new in <span aria-hidden="true">→</span></a></div>
+    <img data-media-id="apparel-coat" data-media-width="700" data-media-quality="85" alt="" loading="lazy">
+  </article>
+</section>
+
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="section-head between">
+      <div>
+        <p class="eyebrow">The RAFA edit</p>
+        <h2>Find your next favourite.</h2>
+        <p class="catalog-disclaimer">Sample catalogue, colours, sizes, and prices for preview. Wishlist and bag are saved only in this browser; stock and checkout are not connected.</p>
+      </div>
+      <span class="bag-preview-count" id="apparelBagSummary" aria-live="polite">Bag preview · 0</span>
+    </div>
+    <div class="catalog-toolbar" aria-label="Filter products">
+      <div class="catalog-filters">
+        <button class="filter-chip active" type="button" data-category="all">All products</button>
+        <button class="filter-chip" type="button" data-category="clothes">Clothing</button>
+        <button class="filter-chip" type="button" data-category="shoes">Shoes</button>
+        <button class="filter-chip" type="button" data-category="handbags">Bags</button>
+        <button class="filter-chip" type="button" data-category="accessories">Accessories</button>
+      </div>
+      <label class="catalog-sort">Sort by <select id="productSort" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
+    </div>
+    <div id="catalogGrid" class="product-grid" aria-live="polite"></div>
+    <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite"></p>
+    <p id="catalogEmpty" class="catalog-empty" hidden>No styles in this category yet. Browse all products to see the full collection.</p>
+  </div>
+</section>
+
+<dialog class="product-quick-view" id="productQuickView" aria-labelledby="productQuickViewTitle">
+  <div class="product-quick-view-shell">
+    <div class="product-quick-view-heading">
+      <p class="eyebrow">Product preview</p>
+      <button type="button" class="quick-view-close" id="closeProductQuickView" aria-label="Close product preview">×</button>
+    </div>
+    <div id="productQuickViewContent"></div>
+  </div>
+</dialog>
+
+<section class="benefits wrap" aria-label="Shopping benefits">
+  <div><span aria-hidden="true">♧</span><p><strong>Delivery options</strong><small>Confirm when enquiring</small></p></div>
+  <div><span aria-hidden="true">◇</span><p><strong>Returns</strong><small>Ask about the policy</small></p></div>
+  <div><span aria-hidden="true">▢</span><p><strong>Order preview</strong><small>No checkout in this preview</small></p></div>
+  <div><span aria-hidden="true">♧</span><p><strong>Questions?</strong><small><a href="contact.html?topic=apparels">Contact RAFA</a></small></p></div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap newsletter-box">
+    <img class="newsletter-image" data-media-id="apparel-look" data-media-width="780" data-media-quality="85" alt="A new-season look from the RAFA collection" loading="lazy">
+    <div class="newsletter-copy">    <p class="eyebrow">Notes from the RAFA edit</p><h2>Stay in the loop</h2><p>Preview a signup for new arrivals and style inspiration.</p>
+      <form class="newsletter-form">
+        <label class="sr-only" for="newsletter-email">Email</label>
+        <input id="newsletter-email" type="email" placeholder="Enter your email" aria-label="Email address" required>
+        <button type="submit" class="btn btn-dark">Subscribe</button>
+      </form>
+      <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="size-guidance wrap" id="size-guidance">
+  <details>
+    <summary>Size &amp; fit guidance</summary>
+    <div>
+      <p>Choose a size on each clothing or footwear card to preview the variant. Sizes and fit can differ by product; this mock catalogue does not include verified garment measurements or international conversions.</p>
+      <p>For accurate fit information, check the final product details or <a href="contact.html?topic=apparels">ask RAFA before ordering</a>.</p>
+    </div>
+  </details>
+</section>
+
+<footer id="contact" class="shared-footer"></footer>
+
+</body>
+</html>

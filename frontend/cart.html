@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3EEE3">
+  <meta name="description" content="Review your RAFA apparel bag and delivery preferences.">
+  <meta name="rafa-api-base" content="">
+  <title>Apparel Checkout Preview — RAFA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/header.css">
+  <link rel="stylesheet" href="assets/styles/footer.css">
+  <link rel="stylesheet" href="assets/styles/public-mobile.css">
+  <link rel="stylesheet" href="assets/styles/shared-shell.css">
+  <link rel="stylesheet" href="assets/styles/cart-page.css">
+  <link rel="stylesheet" href="assets/styles/elan-theme.css">
+  <script src="assets/js/currency.js" defer></script>
+  <script src="assets/js/media.js" defer></script>
+  <script src="assets/js/shared-shell.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/public-mobile.js" defer></script>
+  <script src="assets/js/apparelCart.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+</head>
+<body id="top" data-mobile-page="cart">
+  <header id="siteHeader"></header>
+
+  <main class="cart-dialog cart-page-shell" id="cartPage" aria-labelledby="cartTitle">
+    <div class="cart-dialog-inner">
+      <header class="checkout-header">
+        <a class="checkout-brand" href="index.html" aria-label="RAFA home">RAFA</a>
+        <span class="checkout-demo-label">Checkout demo · no online payment</span>
+        <a class="cart-close" href="apparels.html" aria-label="Continue shopping">×</a>
+      </header>
+
+      <h1 class="sr-only" id="cartTitle">RAFA apparel checkout preview</h1>
+      <nav class="checkout-progress" aria-label="Checkout progress">
+        <ol>
+          <li class="is-complete" data-progress-step="cart"><span>1</span><b>Cart</b></li>
+          <li class="is-current" aria-current="step" data-progress-step="delivery"><span>2</span><b>Delivery</b></li>
+          <li data-progress-step="payment"><span>3</span><b>Payments</b></li>
+          <li data-progress-step="review"><span>4</span><b>Review</b></li>
+        </ol>
+      </nav>
+
+      <div id="cartEmpty" class="cart-empty">
+        <h2>Your apparel bag is empty.</h2>
+        <p>Choose an apparel piece and add it here to review your selection.</p>
+        <a class="checkout-submit cart-empty-link" href="apparels.html">Browse apparels</a>
+      </div>
+
+      <div class="checkout-form" id="checkoutForm" hidden>
+        <div class="checkout-layout">
+          <div class="checkout-details">
+            <section class="checkout-stage" id="deliveryStage" aria-labelledby="shippingTitle">
+              <h2 class="checkout-stage-title" id="shippingTitle">Shipping Information</h2>
+              <div class="checkout-fields">
+                <label class="checkout-field checkout-field-wide" for="countryRegion">Country/Region
+                  <select id="countryRegion" name="countryRegion" autocomplete="country-name" required>
+                    <option value="Kenya" selected>Kenya</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="checkout-field" for="firstName">First name
+                  <input id="firstName" name="firstName" autocomplete="given-name" placeholder="First name" required>
+                </label>
+                <label class="checkout-field" for="lastName">Last name
+                  <input id="lastName" name="lastName" autocomplete="family-name" placeholder="Last name" required>
+                </label>
+                <label class="checkout-field" for="checkoutEmail">Email address
+                  <input id="checkoutEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                </label>
+                <label class="checkout-field" for="checkoutPhone">Phone number
+                  <input id="checkoutPhone" name="phone" type="tel" autocomplete="tel" placeholder="+254 700 000 000" required>
+                </label>
+                <label class="checkout-field checkout-field-wide" for="deliveryAddress">Address (Apartment/Suite etc.)
+                  <input id="deliveryAddress" name="deliveryAddress" autocomplete="street-address" placeholder="Street address" required>
+                </label>
+                <label class="checkout-field" for="checkoutCity">City
+                  <input id="checkoutCity" name="city" autocomplete="address-level2" placeholder="City" required>
+                </label>
+                <label class="checkout-field" for="checkoutPostcode">Post code
+                  <input id="checkoutPostcode" name="postcode" autocomplete="postal-code" placeholder="Post code" required>
+                </label>
+              </div>
+              <p class="checkout-demo-notice">This is a development demo. Delivery details stay in this page and are not submitted.</p>
+
+              <section class="checkout-section checkout-delivery-section" aria-labelledby="deliveryTitle">
+                <h2 id="deliveryTitle">Delivery Method</h2>
+                <div class="delivery-options" role="radiogroup" aria-label="Delivery preference">
+                  <label class="delivery-option is-selected">
+                    <input type="radio" name="deliveryChoice" value="standard" checked>
+                    <span class="delivery-radio" aria-hidden="true"></span>
+                    <span class="delivery-option-copy"><strong>Standard delivery</strong><small>Timing and rate confirmed before order</small></span>
+                    <b>To confirm</b>
+                  </label>
+                  <label class="delivery-option">
+                    <input type="radio" name="deliveryChoice" value="express">
+                    <span class="delivery-radio" aria-hidden="true"></span>
+                    <span class="delivery-option-copy"><strong>Express delivery</strong><small>Availability and rate confirmed before order</small></span>
+                    <b>To confirm</b>
+                  </label>
+                </div>
+              </section>
+
+              <section class="checkout-section checkout-payment-choice" aria-labelledby="paymentChoiceTitle">
+                <h2 id="paymentChoiceTitle">Choose a payment method to continue</h2>
+                <div class="payment-options" role="group" aria-label="Choose a payment method">
+                  <button type="button" class="payment-option" data-payment-method="M-Pesa" aria-pressed="false"><span aria-hidden="true">M</span>M-Pesa</button>
+                  <button type="button" class="payment-option" data-payment-method="Card" aria-pressed="false"><span aria-hidden="true">▤</span>Card</button>
+                  <button type="button" class="payment-option" data-payment-method="Other" aria-pressed="false"><span aria-hidden="true">•••</span>Other</button>
+                </div>
+                <p class="payment-demo-note">Selecting a method opens its payment step. No payment is taken in this demo.</p>
+              </section>
+            </section>
+
+            <section class="checkout-stage" id="paymentStage" aria-labelledby="paymentStageTitle" hidden>
+              <div class="checkout-stage-heading">
+                <div>
+                  <p class="checkout-kicker">Step 3 · Payment</p>
+                  <h2 class="checkout-stage-title" id="paymentStageTitle">Payment details</h2>
+                </div>
+                <button type="button" class="text-button" data-back-to-delivery>Back to delivery</button>
+              </div>
+
+              <div class="payment-method-panel" id="mpesaPanel" hidden>
+                <h3>M-Pesa payment prompt</h3>
+                <p>Check the amount and phone number below before requesting a prompt.</p>
+                <dl class="payment-review-list">
+                  <div><dt>Amount due now</dt><dd id="mpesaAmount">KSh 0</dd></div>
+                  <div><dt>Delivery</dt><dd id="mpesaDelivery">To be confirmed</dd></div>
+                </dl>
+                <label class="checkout-field" for="mpesaPhone">M-Pesa phone number
+                  <input id="mpesaPhone" type="tel" autocomplete="tel" required>
+                </label>
+                <p class="checkout-demo-notice">A real M-Pesa prompt cannot be sent yet. The button below only simulates the prompt in this browser.</p>
+                <button type="button" class="checkout-submit" id="sendMpesaPrompt">Simulate payment prompt</button>
+                <div class="payment-next-step" id="mpesaPromptSent" hidden>
+                  <p role="status">Demo prompt shown as sent. No request reached M-Pesa.</p>
+                  <button type="button" class="checkout-submit" data-simulate-confirmation>Simulate payment confirmation</button>
+                </div>
+              </div>
+
+              <div class="payment-method-panel" id="cardPanel" hidden>
+                <h3>Card payment</h3>
+                <p>Card processing is not connected. Do not enter real card details here.</p>
+                <label class="demo-payment-choice">
+                  <input type="checkbox" id="demoCardConsent">
+                  <span>Use the built-in demo card (test only; no card data is collected).</span>
+                </label>
+                <dl class="payment-review-list">
+                  <div><dt>Demo payment amount</dt><dd id="cardAmount">KSh 0</dd></div>
+                  <div><dt>Delivery</dt><dd id="cardDelivery">To be confirmed</dd></div>
+                </dl>
+                <p class="checkout-demo-notice">The simulated result is for interface development only and is not a payment authorization.</p>
+                <button type="button" class="checkout-submit" id="simulateCardPayment">Simulate card payment</button>
+              </div>
+
+              <div class="payment-method-panel" id="otherPanel" hidden>
+                <h3>Other payment option</h3>
+                <p>Select how you would prefer to arrange payment. No funds are collected by this demo.</p>
+                <label class="checkout-field" for="otherPaymentMethod">Payment preference
+                  <select id="otherPaymentMethod">
+                    <option value="Cash on delivery">Cash on delivery</option>
+                    <option value="Bank transfer">Bank transfer</option>
+                    <option value="Arrange with RAFA">Arrange with RAFA</option>
+                  </select>
+                </label>
+                <dl class="payment-review-list">
+                  <div><dt>Amount due</dt><dd id="otherAmount">KSh 0</dd></div>
+                  <div><dt>Delivery</dt><dd id="otherDelivery">To be confirmed</dd></div>
+                </dl>
+                <p class="checkout-demo-notice">No order or payment details are submitted. You can simulate a confirmation to preview the receipt.</p>
+                <button type="button" class="checkout-submit" id="confirmOtherPayment">Continue with this preference</button>
+                <div class="payment-next-step" id="otherPaymentReady" hidden>
+                  <p role="status">Preference selected for this demo. Payment is not yet verified.</p>
+                  <button type="button" class="checkout-submit" data-simulate-confirmation>Simulate payment confirmation</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="checkout-stage" id="reviewStage" aria-labelledby="reviewTitle" hidden>
+              <p class="checkout-kicker">Step 4 · Review</p>
+              <h2 class="checkout-stage-title" id="reviewTitle">Demo receipt</h2>
+              <div class="receipt-confirmation" id="receiptConfirmation"></div>
+              <dl class="receipt-details" id="receiptDetails"></dl>
+              <h3 class="receipt-items-heading">Items</h3>
+              <ul class="receipt-items" id="receiptItems"></ul>
+              <p class="receipt-disclaimer">Demo receipt only. This does not prove that money was received or an order was placed.</p>
+              <a class="checkout-submit receipt-done" href="apparels.html">Back to apparels</a>
+            </section>
+          </div>
+
+          <aside class="checkout-sidebar" aria-label="Order summary and support">
+            <section class="order-summary" id="cartSummary" aria-labelledby="summaryTitle" hidden>
+              <div class="summary-heading">
+                <h2 id="summaryTitle">Order summary</h2>
+                <button type="button" id="editCart">Edit bag</button>
+              </div>
+              <ul class="cart-items apparel-cart-items" id="cartItems" aria-label="Apparel items in your bag"></ul>
+              <button type="button" class="summary-clear-bag" id="clearCart">Clear bag</button>
+              <dl class="cart-breakdown">
+                <div><dt>Subtotal</dt><dd id="cartSubtotal">KSh 0</dd></div>
+                <div><dt>Delivery</dt><dd id="cartDelivery">To confirm</dd></div>
+                <div class="cart-grand-total"><dt>Estimated amount due</dt><dd id="cartTotal">KSh 0</dd></div>
+              </dl>
+              <p class="summary-terms">Delivery fees are not configured. The amount shown excludes delivery.</p>
+            </section>
+            <section class="checkout-help" aria-labelledby="checkoutHelpTitle">
+              <h2 id="checkoutHelpTitle">Need help?</h2>
+              <p>Questions about sizing or delivery?</p>
+              <a href="contact.html?topic=apparels">Contact RAFA <span aria-hidden="true">↗</span></a>
+            </section>
+          </aside>
+        </div>
+        <div class="mobile-checkout-bar" id="mobileCheckoutBar">
+          <button type="button" class="mobile-summary-toggle" id="mobileSummaryToggle" aria-expanded="false" aria-controls="mobileSummaryDetails">
+            <span class="mobile-summary-label"><strong>Total</strong><small id="mobileItemCount">0 items</small></span>
+            <strong class="mobile-summary-total" id="mobileSubmitTotal">KSh 0</strong>
+            <span class="mobile-summary-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="mobile-summary-details" id="mobileSummaryDetails" hidden>
+            <p><span>Subtotal</span><strong id="mobileSubtotal">KSh 0</strong></p>
+            <p><span>Delivery</span><strong id="mobileDelivery">To confirm</strong></p>
+          </div>
+          <button type="button" class="checkout-submit mobile-place-order" id="mobileStepAction">Choose a payment method</button>
+          <p class="mobile-demo-caption">Demo only · no payment is taken</p>
+        </div>
+      </div>
+
+      <p class="order-status" id="cartStatus" role="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <footer class="shared-footer"></footer>
+</body>
+</html>

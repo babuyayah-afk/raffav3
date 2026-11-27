@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="rafa-api-base" content="">
+  <title>RaFFA ADmin — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="inbox.css">
+  <link rel="stylesheet" href="website-content.css">
+  <link rel="stylesheet" href="showcase-admin.css">
+  <link rel="stylesheet" href="user-management.css">
+  <link rel="stylesheet" href="operations.css">
+  <script src="dashboard.js" defer></script>
+  <script src="inbox.js" defer></script>
+  <script src="website-content.js" defer></script>
+  <script src="showcase-admin.js" defer></script>
+  <script src="admin-step-up.js" defer></script>
+  <script src="testimonial-admin.js" defer></script>
+  <script src="user-management.js" defer></script>
+  <script src="operations.js" defer></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="RaFFA ADmin dashboard">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 2.8 27.5 9.4v13.2L16 29.2 4.5 22.6V9.4L16 2.8Z"/><path d="m11 21 5-10 5 10M13 17h6"/></svg></span>
+        <span class="brand-name">RaFFA ADmin</span>
+      </a>
+      <nav class="side-nav" id="sideNav" aria-label="Main navigation">
+        <div class="nav-group">
+          <p class="nav-heading">MAIN</p>
+          <button class="nav-item active" type="button" data-nav="Dashboards"><span class="nav-icon" data-icon="grid"></span><span class="nav-label">Dashboard</span></button>
+          <button class="nav-item" type="button" data-nav="Inbox"><span class="nav-icon" data-icon="mail"></span><span class="nav-label">Inbox</span><span class="inbox-nav-badge" id="inboxNavUnread" hidden>0</span></button>
+          <button class="nav-item" type="button" data-nav="Website Content"><span class="nav-icon" data-icon="file"></span><span class="nav-label">Website Content</span></button>
+          <button class="nav-item" type="button" data-nav="CMS"><span class="nav-icon" data-icon="edit"></span><span class="nav-label">CMS</span></button>
+          <button class="nav-item" type="button" data-nav="Apparels"><span class="nav-icon" data-icon="shoppingBag"></span><span class="nav-label">Apparels</span></button>
+          <button class="nav-item" type="button" data-nav="Customers"><span class="nav-icon" data-icon="users"></span><span class="nav-label">Customers</span></button>
+          <button class="nav-item" type="button" data-nav="Quotes"><span class="nav-icon" data-icon="wallet"></span><span class="nav-label">Quotes</span></button>
+          <button class="nav-item" type="button" data-nav="Bookings"><span class="nav-icon" data-icon="briefcase"></span><span class="nav-label">Bookings</span></button>
+          <button class="nav-item" type="button" data-nav="Ecommerce"><span class="nav-dot"></span><span class="nav-label">Ecommerce</span></button>
+          <button class="nav-item" type="button" data-nav="Analytics"><span class="nav-dot"></span><span class="nav-label">Analytics</span></button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-heading">MANAGEMENT</p>
+          <button class="nav-item" type="button" data-nav="Settings"><span class="nav-dot"></span><span class="nav-label">Settings</span></button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-heading">PAGES</p>
+          <button class="nav-item" type="button" data-nav="Pages"><span class="nav-icon" data-icon="file"></span><span class="nav-label">Pages</span><span class="new-badge">New</span></button>
+          <button class="nav-item" type="button" data-nav="Task"><span class="nav-icon" data-icon="checkSquare"></span><span class="nav-label">Task</span><span class="new-badge">New</span></button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-heading">APPS</p>
+          <button class="nav-item" type="button" data-nav="Calendar"><span class="nav-icon" data-icon="calendar"></span><span class="nav-label">Calendar</span></button>
+          <button class="nav-item" type="button" data-nav="Email"><span class="nav-icon" data-icon="mail"></span><span class="nav-label">Email</span></button>
+          <button class="nav-item" type="button" data-nav="Chat"><span class="nav-icon" data-icon="message"></span><span class="nav-label">Chat</span></button>
+          <button class="nav-item" type="button" data-nav="File Manager"><span class="nav-icon" data-icon="folder"></span><span class="nav-label">File Manager</span></button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-heading">WIDGETS</p>
+          <button class="nav-item" type="button" data-nav="Charts"><span class="nav-icon" data-icon="chart"></span><span class="nav-label">Charts</span></button>
+          <button class="nav-item" type="button" data-nav="Forms"><span class="nav-icon" data-icon="form"></span><span class="nav-label">Forms</span></button>
+        </div>
+      </nav>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="menu-button" id="sidebarToggle" type="button" aria-label="Toggle navigation" aria-expanded="true"><span></span><span></span><span></span></button>
+        <div class="topbar-tools">
+          <label class="global-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="globalSearch" type="search" placeholder="Search anything..." autocomplete="off" aria-label="Search dashboard"></label>
+          <div class="popover-wrap">
+            <button class="header-button language-button" type="button" data-menu="languageMenu" aria-expanded="false"><span class="flag">🇺🇸</span><span>EN</span><span class="small-chevron">⌄</span></button>
+            <div class="popover language-menu" id="languageMenu" hidden><button type="button">🇺🇸 &nbsp; English</button><button type="button">🇫🇷 &nbsp; Français</button><button type="button">🇪🇸 &nbsp; Español</button></div>
+          </div>
+          <div class="popover-wrap">
+            <button class="header-button display-scale-button" id="displayScaleToggle" type="button" data-menu="displayScaleMenu" aria-controls="displayScaleMenu" aria-expanded="false" aria-label="Display size, 100 percent">Aa</button>
+            <div class="popover display-scale-menu" id="displayScaleMenu" hidden>
+              <strong>Display size</strong>
+              <div class="display-scale-actions" role="group" aria-label="Adjust admin display size">
+                <button type="button" id="decreaseDisplayScale" aria-label="Decrease display size">A-</button>
+                <output id="displayScaleValue" aria-live="polite">100%</output>
+                <button type="button" id="increaseDisplayScale" aria-label="Increase display size">A+</button>
+              </div>
+              <button class="display-scale-reset" type="button" id="resetDisplayScale">Reset to default</button>
+            </div>
+          </div>
+          <button class="header-button icon-only theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span data-icon="moon"></span></button>
+          <div class="popover-wrap">
+            <button class="header-button icon-only notification-button" type="button" data-menu="notificationMenu" aria-label="Notifications, 2 unread" aria-expanded="false"><span data-icon="bell"></span><span class="notification-count">2</span></button>
+            <div class="popover notification-menu" id="notificationMenu" hidden><strong>Notifications</strong><p>New lead assigned to your team <small>5 min ago</small></p><p>Your weekly report is ready <small>1 hr ago</small></p></div>
+          </div>
+          <button class="header-button icon-only email-button" type="button" id="emailButton" aria-label="Open messages"><span data-icon="mail"></span><span class="notification-count">4</span></button>
+          <button class="header-button icon-only fullscreen-button" type="button" id="fullscreenButton" aria-label="Toggle fullscreen"><span data-icon="expand"></span></button>
+          <button class="profile-button" id="headerProfileButton" type="button" aria-label="Open Settings"><span class="avatar avatar-photo" id="profileAvatar">--</span><span class="profile-copy"><strong id="profileName">Guest</strong><small id="profileRole">Not signed in</small></span></button>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <div id="dashboardView">
+        <section class="welcome"><h1 id="adminWelcomeTitle">Welcome back</h1><p>Track your sales activity, leads and deals here.</p></section>
+        <section class="operations-dashboard" id="operationsDashboardWidget" aria-labelledby="operationsDashboardTitle">
+          <div class="operations-dashboard-heading"><div><p class="page-eyebrow">EVENTS &amp; DESSERTS</p><h2 id="operationsDashboardTitle">Operations at a glance</h2></div><button class="website-secondary" type="button" data-nav-target="Bookings">Open bookings</button></div>
+          <div class="operations-dashboard-metrics">
+            <button type="button" class="operations-summary-card" data-nav-target="Inbox"><span>New inquiries</span><strong id="summaryNewInquiries">—</strong></button>
+            <button type="button" class="operations-summary-card" data-nav-target="Quotes"><span>Quotes awaiting reply</span><strong id="summaryQuotesAwaiting">—</strong></button>
+            <button type="button" class="operations-summary-card" data-nav-target="Calendar"><span>Upcoming bookings</span><strong id="summaryUpcomingBookings">—</strong></button>
+            <button type="button" class="operations-summary-card" data-nav-target="Bookings"><span>Balances due</span><strong id="summaryBalancesDue">—</strong></button>
+          </div>
+          <p class="operations-status" id="operationsSummaryStatus" role="status" aria-live="polite"></p>
+        </section>
+        <div class="dashboard-grid">
+          <section class="left-column" aria-label="Target and top deals">
+            <article class="target-card"><div class="target-decoration" aria-hidden="true"></div><div class="target-copy"><h2>Your target is<br>incomplete</h2><p>You have completed<br>48% of the given target,<br>you can also check your<br>status.</p><button class="text-action light-action" type="button" data-view="Target details">View Details <span>→</span></button></div><div class="progress-ring" role="img" aria-label="Target 48 percent complete"><span>48%</span></div></article>
+            <article class="card top-deals-card"><div class="card-heading"><h2>Top Deals</h2><button type="button" class="view-all" data-view="Top deals">View All <span>→</span></button></div><div class="top-deals-list" id="topDealsList"></div></article>
+            <article class="card profit-card"><div class="card-heading"><h2>Profit Earned</h2><button type="button" class="view-all" data-view="Profit earned">View All <span>→</span></button></div><div class="profit-chart" role="img" aria-label="Profit earned bar chart"><div class="profit-axis"><span>150</span><span>100</span><span>50</span><span>0</span></div><div class="profit-plot"><div class="profit-gridlines"><i></i><i></i><i></i></div><div class="profit-bars" id="profitBars"></div></div></div></article>
+          </section>
+
+          <section class="center-column" aria-label="Sales analytics">
+            <div class="stats-grid" id="statsGrid"></div>
+            <article class="card revenue-card">
+              <div class="card-heading"><h2>Revenue Analytics</h2><button type="button" class="view-all" data-view="Revenue analytics">View All <span>→</span></button></div>
+              <div class="chart-subtitle">Revenue Analytics with sales &amp; profit (USD)</div>
+              <div class="chart-tools" aria-label="Chart controls">
+                <button type="button" data-chart="zoom-in" aria-label="Zoom in"><span data-icon="plusCircle"></span></button>
+                <button type="button" data-chart="zoom-out" aria-label="Zoom out"><span data-icon="minusCircle"></span></button>
+                <button type="button" data-chart="reset" aria-label="Reset chart"><span data-icon="home"></span></button>
+                <button type="button" data-chart="download" aria-label="Download chart"><span data-icon="download"></span></button>
+                <button type="button" data-chart="menu" aria-label="Chart options"><span data-icon="menu"></span></button>
+              </div>
+              <div class="revenue-chart-wrap" id="revenueChart"><div class="revenue-axis"><span>$1000</span><span>$800</span><span>$600</span><span>$400</span><span>$200</span><span>$0</span></div>
+                <svg class="revenue-chart" viewBox="0 0 600 190" preserveAspectRatio="none" role="img" aria-label="Sales, revenue and profit from January to December">
+                  <defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff8a26" stop-opacity=".18"/><stop offset="1" stop-color="#ff8a26" stop-opacity="0"/></linearGradient></defs>
+                  <path class="chart-gridline" d="M0 18H600M0 50H600M0 82H600M0 114H600M0 146H600M0 178H600"/>
+                  <path class="chart-area" d="M0 166 C20 158 24 128 48 120 S82 154 102 134 S131 99 150 115 S182 148 201 131 S230 100 252 96 S282 121 300 102 S335 69 351 83 S380 117 400 94 S427 63 449 79 S478 126 498 112 S523 75 548 93 S577 139 600 127 V178 H0Z"/>
+                  <path class="chart-line chart-line-sales" d="M0 166 C27 158 31 143 50 125 S86 145 103 134 S132 97 151 115 S180 150 201 130 S231 100 253 96 S283 118 300 102 S334 65 351 82 S380 118 400 94 S429 62 449 79 S478 126 498 112 S525 77 548 92 S578 137 600 127"/>
+                  <path class="chart-line chart-line-revenue" d="M0 170 C30 165 44 153 64 145 S95 154 115 147 S143 124 165 138 S200 150 220 140 S251 112 274 116 S305 146 328 130 S352 95 376 112 S410 148 434 132 S465 115 486 127 S521 157 545 140 S580 130 600 155"/>
+                  <path class="chart-line chart-line-profit" d="M0 167 C21 161 31 108 52 89 S84 98 105 112 S140 139 159 122 S190 86 208 95 S240 118 260 88 S291 63 310 87 S341 115 363 101 S393 72 414 88 S445 124 466 109 S496 89 516 110 S547 139 568 120 S589 138 600 153"/>
+                </svg><div class="month-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+              </div>
+              <div class="chart-legend"><span><i class="legend-dot sales"></i>Sales</span><span><i class="legend-dot revenue"></i>Revenue</span><span><i class="legend-dashed"></i>Profit</span></div>
+            </article>
+          </section>
+
+          <section class="right-column" aria-label="Lead and deal summaries">
+            <article class="card sources-card"><div class="card-heading"><h2>Leads By Source</h2><button class="card-menu" type="button" aria-label="Leads menu">⋮</button></div><div class="donut-wrap"><div class="donut-chart"><div class="donut-hole"><span>Total</span><strong>4,145</strong></div></div></div><div class="source-legend" id="sourceLegend"></div></article>
+            <article class="card deals-status-card"><div class="card-heading"><h2>Deals Status</h2><button type="button" class="view-all" data-view="Deals status">View All <span>→</span></button></div><div class="deals-total"><strong>4,289</strong><span class="comparison">1.02 <b>↑</b></span><small>compared to last week</small></div><div class="status-progress"><span></span></div><div class="deal-status-list" id="dealStatusList"></div></article>
+            <article class="card activity-card"><div class="card-heading"><h2>Recent Activity</h2><button type="button" class="view-all" data-view="Recent activity">View All <span>→</span></button></div><ol class="activity-list" id="activityList"></ol><button class="show-more" id="showMore" type="button">Show More</button></article>
+          </section>
+
+          <section class="card table-card" aria-label="Deals statistics">
+            <div class="table-toolbar"><div class="card-heading"><h2>Deals Statistics</h2></div><div class="table-actions"><label class="table-search"><span data-icon="search"></span><input id="tableSearch" type="search" placeholder="Search here..." aria-label="Search deals"></label><button class="sort-button" id="sortButton" type="button" aria-label="Sort deals">Sort By <span>⌄</span></button></div></div>
+            <div class="table-scroll"><table class="deals-table"><thead><tr><th class="select-cell"><input id="selectAll" type="checkbox" aria-label="Select all deals"></th><th>Sales Rep.</th><th>Category</th><th>Mail</th><th>Location</th><th>Date</th><th>Amount</th><th>Action</th></tr></thead><tbody id="dealsTableBody"></tbody></table></div>
+            <div class="table-footer"><span id="entryCount">Showing 5 Entries</span><nav class="pagination" aria-label="Deals pages"><button type="button" data-page="prev" aria-label="Previous page" disabled>Prev</button><button type="button" data-page="1" class="current" aria-current="page">1</button><button type="button" data-page="2" disabled>2</button><button type="button" data-page="next" aria-label="Next page" disabled>Next</button></nav></div>
+          </section>
+        </div>
+        </div>
+        <section class="admin-page-view" id="adminPageView" aria-live="polite" hidden>
+          <div class="admin-page-heading">
+            <div><p class="page-eyebrow" id="pageEyebrow">WORKSPACE</p><h1 id="pageTitle">CRM</h1><p id="pageDescription"></p></div>
+            <div class="page-heading-actions"><span class="demo-badge"><i></i>Demo data</span><button class="page-primary-button" id="pagePrimaryAction" type="button">Create new</button></div>
+          </div>
+          <div class="page-metrics" id="pageMetrics"></div>
+          <div class="page-tabs" id="pageTabs" role="tablist"></div>
+          <div class="page-layout" id="pageLayout"></div>
+          <p class="page-demo-note">UI preview only · Sample data is stored in this page session and is not sent to a server.</p>
+        </section>
+        <section class="inbox-view" id="inboxView" aria-labelledby="inboxTitle" hidden>
+          <header class="inbox-heading">
+            <div>
+              <p class="page-eyebrow">INQUIRY ENGINE</p>
+              <h1 id="inboxTitle">Inbox</h1>
+              <p>Review and follow up on dessert, event, apparel, and general inquiries.</p>
+            </div>
+            <div class="inbox-heading-actions">
+              <span class="inbox-unread-count" aria-label="Unread inquiry count"><span id="inboxUnreadCount">0</span> unread</span>
+              <button class="website-secondary" id="inboxRefresh" type="button">Refresh</button>
+            </div>
+          </header>
+          <div class="inbox-toolbar" aria-label="Filter inquiries">
+            <label class="inbox-search">Search name, phone, or email<input id="inboxSearch" type="search" maxlength="100" autocomplete="off"></label>
+            <label>Type<select id="inboxTypeFilter"><option value="">All types</option><option value="events">Events</option><option value="desserts">Desserts</option><option value="apparels">Apparel</option><option value="general">General</option></select></label>
+            <label>Status<select id="inboxStatusFilter"><option value="">All statuses</option><option value="new">New</option><option value="contacted">Contacted</option><option value="quote_sent">Quote sent</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="lost">Lost</option><option value="declined">Declined</option></select></label>
+            <label>From<input id="inboxDateFrom" type="date"></label>
+            <label>To<input id="inboxDateTo" type="date"></label>
+            <label>Assignee<select id="inboxAssigneeFilter"><option value="">All assignees</option></select></label>
+            <label>Sort<select id="inboxSort"><option value="created_at">Newest received</option><option value="last_activity_at">Recent activity</option><option value="updated_at">Recently updated</option><option value="name">Name</option><option value="status">Status</option></select></label>
+            <button class="website-secondary" id="inboxClearFilters" type="button">Clear</button>
+          </div>
+          <div class="inbox-workspace">
+            <section class="inbox-list-panel" aria-label="Inquiry list">
+              <div class="inbox-list-heading"><h2>Inquiries</h2><span id="inboxResultCount">0 inquiries</span></div>
+              <div class="inbox-table-scroll">
+                <table class="inbox-table">
+                  <thead><tr><th scope="col">Customer</th><th scope="col">Type</th><th scope="col">Status</th><th scope="col">Received</th><th scope="col">Assignee</th><th scope="col">Follow-up</th></tr></thead>
+                  <tbody id="inboxRows"><tr><td class="inbox-empty-cell" colspan="6">Open Inbox to load inquiries.</td></tr></tbody>
+                </table>
+              </div>
+              <div class="inbox-pagination">
+                <span id="inboxPage">Page 1 of 1</span>
+                <div><button id="inboxPrevious" type="button" disabled>Previous</button><button id="inboxNext" type="button" disabled>Next</button></div>
+              </div>
+            </section>
+            <aside class="inbox-detail-panel" aria-label="Selected inquiry">
+              <div class="inbox-detail-empty" id="inboxDetail">Select an inquiry to view its details and activity.</div>
+              <p class="inbox-detail-status" id="inboxDetailStatus" aria-live="polite"></p>
+            </aside>
+          </div>
+          <p class="inbox-status" id="inboxStatus" role="status" aria-live="polite"></p>
+          <button class="website-secondary" id="inboxSettingsLink" type="button" hidden>Open Settings to sign in</button>
+        </section>
+        <section class="operations-view" id="operationsView" aria-labelledby="operationsTitle" hidden>
+          <header class="operations-heading">
+            <div><p class="page-eyebrow">EVENTS &amp; DESSERTS OPERATIONS</p><h1 id="operationsTitle">Customers</h1><p id="operationsDescription">Customer profiles, quotes, bookings, and payments.</p></div>
+            <div class="operations-heading-actions"><button class="website-secondary" id="operationsRefresh" type="button">Refresh</button><button class="page-primary-button" id="operationsCreate" type="button">New customer</button></div>
+          </header>
+          <nav class="operations-tabs" aria-label="Operations sections">
+            <button type="button" data-operations-view="Customers" role="tab">Customers</button>
+            <button type="button" data-operations-view="Quotes" role="tab">Quotes</button>
+            <button type="button" data-operations-view="Bookings" role="tab">Bookings</button>
+            <button type="button" data-operations-view="Calendar" role="tab">Calendar</button>
+          </nav>
+          <div class="operations-toolbar" id="operationsToolbar">
+            <label id="operationsSearchLabel">Search customers<input id="operationsSearch" type="search" maxlength="100" autocomplete="off"></label>
+            <label id="operationsStatusLabel" hidden>Status<select id="operationsStatusFilter"></select></label>
+            <div class="operations-calendar-controls" id="operationsCalendarControls" hidden>
+              <label>View<select id="operationsCalendarMode"><option value="month">Month</option><option value="week">Week</option><option value="day">Day</option></select></label>
+              <button class="website-secondary" id="operationsCalendarPrevious" type="button" aria-label="Previous period">←</button>
+              <label>Date<input id="operationsCalendarDate" type="date"></label>
+              <button class="website-secondary" id="operationsCalendarNext" type="button" aria-label="Next period">→</button>
+            </div>
+          </div>
+          <div class="operations-split" id="operationsSplit">
+            <section class="operations-panel" aria-label="Operations records">
+              <div class="operations-list-heading"><h2 id="operationsListTitle">Customers</h2><span id="operationsCount">0</span></div>
+              <div class="operations-table-scroll"><table class="operations-table"><thead id="operationsTableHead"></thead><tbody id="operationsRows"></tbody></table></div>
+              <div class="operations-pagination"><span id="operationsPage">Page 1</span><div><button class="website-secondary" id="operationsPrevious" type="button" disabled>Previous</button><button class="website-secondary" id="operationsNext" type="button" disabled>Next</button></div></div>
+            </section>
+            <aside class="operations-panel operations-detail" id="operationsDetail" aria-label="Selected record">
+              <div class="operations-empty">Select a record to review its details.</div>
+            </aside>
+          </div>
+          <section class="operations-calendar" id="operationsCalendar" aria-label="Booking calendar" hidden></section>
+          <p class="operations-status" id="operationsStatus" role="status" aria-live="polite"></p>
+        </section>
+        <section class="website-content-view" id="websiteContentView" aria-live="polite" hidden>
+          <div class="website-content-heading">
+            <div><p class="page-eyebrow">WEBSITE MANAGEMENT</p><h1 id="websiteContentTitle">Website Content</h1><p id="websiteContentDescription">Edit homepage page text and publish changes to the website.</p></div>
+            <a class="website-public-link" href="../frontend/index.html" target="_blank" rel="noopener">View website ↗</a>
+          </div>
+          <div class="website-manager" id="websiteManager">
+            <div class="website-demo-notice" role="note">
+              <strong>Publishing access required.</strong> Sign in with an owner or manager account. Drafts remain private until published; showcase uploads are stored in a private media library.
+            </div>
+            <nav class="showcase-admin-tabs" id="showcaseAdminTabs" aria-label="CMS tools" hidden>
+              <button type="button" data-showcase-view="showcase">Packages, portfolio &amp; FAQs</button>
+              <button type="button" data-showcase-view="sections">Sections &amp; media</button>
+            </nav>
+            <section class="website-manager-panel" id="websiteContentPanel">
+              <aside class="website-preview-panel" aria-label="Website section preview">
+                <div class="website-preview-heading"><div><p class="page-eyebrow">PREVIEW</p><h2>Section preview</h2></div><span id="websitePreviewState">Sample preview</span></div>
+                <div class="website-content-preview" id="websiteContentPreview" aria-live="polite"></div>
+              </aside>
+              <div class="website-editor-controls">
+                <label for="websiteContentKey">Content section</label>
+                <select id="websiteContentKey">
+                  <optgroup label="Homepage" data-content-group="general">
+                    <option value="home.heroCards">Floating cards</option>
+                    <option value="home.stats">Counters</option>
+                    <option value="home.services">Services</option>
+                    <option value="home.projects">Portfolio scroller</option>
+                  </optgroup>
+                  <optgroup label="Apparels" data-content-group="apparel">
+                    <option value="apparel.catalog">Product catalog</option>
+                    <option value="apparel.newsletter">Newsletter</option>
+                  </optgroup>
+                </select>
+                <p id="websiteContentHelp"></p>
+              </div>
+              <div class="website-content-fields" id="websiteContentFields"></div>
+              <div class="website-editor-actions">
+                <button class="website-secondary" id="websiteReloadContent" type="button">Discard edits</button>
+                <button class="website-secondary" id="websiteSaveDraft" type="button" disabled>Save draft</button>
+                <button class="page-primary-button" id="websiteSaveContent" type="button" disabled>Publish</button>
+              </div>
+              <p class="website-content-status" id="websiteContentStatus" role="status" aria-live="polite"></p>
+            </section>
+            <section class="showcase-admin-view" id="showcaseAdminView" hidden aria-labelledby="showcaseAdminTitle">
+              <div class="showcase-admin-heading">
+                <div><p class="page-eyebrow">STRUCTURED WEBSITE CONTENT</p><h2 id="showcaseAdminTitle">Packages, portfolio &amp; FAQs</h2></div>
+                <button type="button" class="website-secondary" id="showcaseRefresh">Refresh</button>
+              </div>
+              <div class="showcase-admin-columns">
+                <section class="showcase-admin-panel" aria-labelledby="showcaseListTitle">
+                  <div class="showcase-admin-panel-heading"><h3 id="showcaseListTitle">Entries</h3><button type="button" class="website-secondary" id="showcaseNew">New entry</button></div>
+                  <label class="showcase-label" for="showcaseTypeFilter">Content type</label>
+                  <select class="showcase-control" id="showcaseTypeFilter">
+                    <option value="dessert_package">Dessert packages</option>
+                    <option value="event_package">Event packages</option>
+                    <option value="portfolio_item">Portfolio</option>
+                    <option value="faq">FAQs</option>
+                  </select>
+                  <label class="showcase-label" for="showcaseStatusFilter">Status</label>
+                  <select class="showcase-control" id="showcaseStatusFilter">
+                    <option value="all">All active entries</option>
+                    <option value="draft">Drafts</option>
+                    <option value="published">Published</option>
+                  </select>
+                  <div class="showcase-entry-list" id="showcaseEntryList" aria-live="polite"></div>
+                  <p class="showcase-admin-status" id="showcaseListStatus" role="status" aria-live="polite"></p>
+                </section>
+                <section class="showcase-admin-panel" aria-labelledby="showcaseEditorTitle">
+                  <h3 id="showcaseEditorTitle">Edit entry</h3>
+                  <form id="showcaseEditor" class="showcase-form">
+                    <label class="showcase-label" for="showcaseTitle">Title</label>
+                    <input class="showcase-control" id="showcaseTitle" maxlength="160" required>
+                    <label class="showcase-label" for="showcaseSlug">URL slug</label>
+                    <input class="showcase-control" id="showcaseSlug" maxlength="120" pattern="[a-z0-9]+(-[a-z0-9]+)*" required>
+                    <label class="showcase-label" for="showcaseSummary">Summary</label>
+                    <textarea class="showcase-control" id="showcaseSummary" maxlength="1000" rows="2"></textarea>
+                    <label class="showcase-label" for="showcaseBody">Description / answer</label>
+                    <textarea class="showcase-control" id="showcaseBody" maxlength="10000" rows="5"></textarea>
+                    <label class="showcase-label" for="showcaseDetails">Additional details (JSON object)</label>
+                    <textarea class="showcase-control showcase-json" id="showcaseDetails" rows="5">{}</textarea>
+                    <label class="showcase-label" for="showcaseImage">Image</label>
+                    <select class="showcase-control" id="showcaseImage"><option value="">No image</option></select>
+                    <div class="showcase-form-row">
+                      <label class="showcase-label" for="showcaseDisplayOrder">Display order</label>
+                      <input class="showcase-control" id="showcaseDisplayOrder" type="number" min="0" max="10000" value="0">
+                      <label class="showcase-check"><input id="showcaseVisible" type="checkbox" checked> Visible</label>
+                      <label class="showcase-check"><input id="showcaseFeatured" type="checkbox"> Featured</label>
+                    </div>
+                    <label class="showcase-label" for="showcasePreviewStatus">Save as</label>
+                    <select class="showcase-control" id="showcasePreviewStatus">
+                      <option value="draft">Draft</option>
+                      <option value="published">Published</option>
+                    </select>
+                    <div class="showcase-form-actions">
+                      <button type="button" class="website-secondary" id="showcaseArchive" disabled>Archive</button>
+                      <button type="submit" class="page-primary-button" id="showcaseSave" disabled>Save entry</button>
+                    </div>
+                  </form>
+                  <article class="showcase-entry-preview" id="showcasePreview" aria-live="polite">
+                    <p class="page-eyebrow">PREVIEW</p><h4 id="showcasePreviewTitle">New entry</h4>
+                    <p id="showcasePreviewSummary"></p><div id="showcasePreviewImage"></div><p id="showcasePreviewBody"></p>
+                  </article>
+                  <p class="showcase-admin-status" id="showcaseEditorStatus" role="status" aria-live="polite"></p>
+                </section>
+              </div>
+            </section>
+            <section class="showcase-admin-view" id="showcaseSettingsView" hidden aria-labelledby="showcaseSettingsTitle">
+              <div class="showcase-admin-heading">
+                <div><p class="page-eyebrow">WEBSITE STRUCTURE</p><h2 id="showcaseSettingsTitle">Sections &amp; media library</h2></div>
+                <button type="button" class="website-secondary" id="sectionRefresh">Refresh</button>
+              </div>
+              <div class="showcase-admin-columns">
+                <section class="showcase-admin-panel" aria-labelledby="sectionListTitle">
+                  <h3 id="sectionListTitle">Homepage sections</h3>
+                  <p class="showcase-help">Hidden sections remain saved and can be shown again. Lower order numbers appear first.</p>
+                  <div id="siteSectionList" class="site-section-list"></div>
+                  <button type="button" class="page-primary-button" id="saveSiteSections" disabled>Save section settings</button>
+                  <p class="showcase-admin-status" id="sectionStatus" role="status" aria-live="polite"></p>
+                </section>
+                <section class="showcase-admin-panel" aria-labelledby="mediaTitle">
+                  <h3 id="mediaTitle">Private media library</h3>
+                  <form id="showcaseUploadForm" class="showcase-upload-form">
+                    <label class="showcase-label" for="showcaseFile">Upload image (JPEG, PNG or WebP)</label>
+                    <input class="showcase-control" id="showcaseFile" type="file" accept="image/jpeg,image/png,image/webp" required>
+                    <label class="showcase-label" for="showcaseAltText">Alternative text</label>
+                    <input class="showcase-control" id="showcaseAltText" maxlength="500">
+                    <button class="page-primary-button" id="showcaseUpload" type="submit" disabled>Upload image</button>
+                  </form>
+                  <label class="showcase-label" for="mediaSearch">Search file names</label>
+                  <input class="showcase-control" id="mediaSearch" type="search" maxlength="100">
+                  <div id="showcaseMediaList" class="showcase-media-list" aria-live="polite"></div>
+                  <p class="showcase-admin-status" id="mediaStatus" role="status" aria-live="polite"></p>
+                </section>
+              </div>
+            </section>
+          </div>
+          <section class="testimonial-review-panel" id="testimonialReviewPanel" aria-labelledby="testimonialReviewTitle" hidden>
+            <div class="testimonial-review-heading">
+              <div>
+                <p class="page-eyebrow">PUBLIC SUBMISSIONS</p>
+                <h2 id="testimonialReviewTitle">Testimonial review</h2>
+                <p>Approving a submission publishes it on the website. Rejected submissions stay private.</p>
+              </div>
+              <div class="testimonial-review-actions">
+                <button class="website-secondary" id="testimonialRefresh" type="button" hidden>Refresh</button>
+                <button class="website-secondary" id="testimonialLogout" type="button" hidden>Sign out</button>
+              </div>
+            </div>
+            <div class="testimonial-review-auth" id="testimonialReviewAuth">
+              <form id="testimonialLoginForm">
+                <label id="testimonialAdminIdentifierLabel" for="testimonialAdminUsername">Admin username</label>
+                <input id="testimonialAdminUsername" name="username" type="text" autocomplete="username" required>
+                <label for="testimonialAdminPassword">Password</label>
+                <input id="testimonialAdminPassword" name="password" type="password" autocomplete="current-password" required>
+                <button class="page-primary-button" type="submit">Sign in</button>
+              </form>
+              <form id="testimonialMfaForm" hidden>
+                <div id="testimonialMfaSetup" hidden>
+                  <p>Scan this QR code with your authenticator app. You can also enter the setup key manually.</p>
+                  <img id="testimonialMfaQr" alt="Authenticator setup QR code">
+                  <p>Manual setup key: <code id="testimonialMfaSecret"></code></p>
+                </div>
+                <label for="testimonialMfaCode" id="testimonialMfaLabel">Authenticator code or recovery code</label>
+                <input id="testimonialMfaCode" name="code" type="text" autocomplete="one-time-code" minlength="6" maxlength="11" required>
+                <button class="page-primary-button" id="testimonialMfaSubmit" type="submit">Verify code</button>
+              </form>
+              <div class="testimonial-recovery-codes" id="testimonialRecoveryCodes" hidden>
+                <h3>Save your recovery codes</h3>
+                <p>These are shown once. Store them somewhere safe before continuing.</p>
+                <pre id="testimonialRecoveryCodeList"></pre>
+                <button class="website-secondary" id="testimonialRecoveryContinue" type="button">I saved my codes</button>
+              </div>
+            </div>
+            <div id="testimonialReviewQueue" hidden>
+              <p class="testimonial-review-role" id="testimonialReviewRole"></p>
+              <div class="testimonial-submission-list" id="testimonialSubmissionList"></div>
+            </div>
+            <p class="testimonial-review-status" id="testimonialReviewStatus" role="status" aria-live="polite"></p>
+          </section>
+        </section>
+        <section class="user-management-view" id="userManagementView" aria-labelledby="userManagementTitle" hidden>
+          <header class="user-management-heading">
+            <div>
+              <p class="page-eyebrow">SETTINGS</p>
+              <h1 id="userManagementTitle">Administrator accounts</h1>
+              <p>Invite team members, assign a role, and deactivate access when needed.</p>
+            </div>
+            <button class="website-secondary" id="userManagementRefresh" type="button">Refresh</button>
+          </header>
+          <p class="user-management-status" id="userManagementStatus" role="status" aria-live="polite"></p>
+          <section class="user-management-card user-profile-card" id="userManagementProfile" aria-labelledby="userManagementProfileTitle" hidden>
+            <div class="user-management-card-heading">
+              <div><h2 id="userManagementProfileTitle">My account</h2><p>Your signed-in administrator profile and security status.</p></div>
+              <button class="website-secondary" id="userManagementSignOut" type="button">Sign out</button>
+            </div>
+            <dl class="user-profile-details">
+              <div><dt>Display name</dt><dd id="settingsProfileName">—</dd></div>
+              <div><dt>Email</dt><dd id="settingsProfileEmail">—</dd></div>
+              <div><dt>Role</dt><dd id="settingsProfileRole">—</dd></div>
+              <div><dt>Multi-factor authentication</dt><dd id="settingsProfileMfa">—</dd></div>
+            </dl>
+          </section>
+          <div class="user-management-auth" id="userManagementAuth" hidden>
+            <strong id="userManagementAuthTitle">Administrator sign-in</strong>
+            <p id="userManagementAuthDescription">Use an owner account and MFA to manage administrator access.</p>
+            <form id="userManagementLoginForm" class="user-management-login-form">
+              <label for="userManagementEmail">Admin email</label>
+              <input id="userManagementEmail" name="email" type="email" autocomplete="username" maxlength="254" required>
+              <label for="userManagementPassword">Password</label>
+              <input id="userManagementPassword" name="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required>
+              <button class="page-primary-button" id="userManagementLoginSubmit" type="submit">Sign in</button>
+            </form>
+            <form id="userManagementMfaForm" class="user-management-login-form" hidden>
+              <div id="userManagementMfaSetup" hidden>
+                <p>Scan this QR code with an authenticator app.</p>
+                <img id="userManagementMfaQr" alt="Authenticator setup QR code">
+                <p>Manual setup key: <code id="userManagementMfaSecret"></code></p>
+              </div>
+              <label for="userManagementMfaCode">Authenticator code or recovery code</label>
+              <input id="userManagementMfaCode" name="code" type="text" autocomplete="one-time-code" inputmode="text" pattern="(?:[0-9]{6}|[A-Z0-9]{5}-[A-Z0-9]{5})" minlength="6" maxlength="11" aria-describedby="userManagementMfaHint" required>
+              <small id="userManagementMfaHint">Use 6 digits or a recovery code formatted XXXXX-XXXXX. Letters must be uppercase.</small>
+              <button class="page-primary-button" id="userManagementMfaSubmit" type="submit">Verify code</button>
+            </form>
+            <div class="user-management-recovery" id="userManagementRecovery" hidden>
+              <strong>Save your recovery codes</strong>
+              <p>These codes are shown once. Store them securely before continuing.</p>
+              <pre id="userManagementRecoveryCodes"></pre>
+              <button class="website-secondary" id="userManagementRecoveryContinue" type="button">I saved my codes</button>
+            </div>
+          </div>
+          <div class="user-management-denied" id="userManagementDenied" role="alert" hidden>
+            Administrator management is restricted to active owners.
+          </div>
+          <div class="user-management-content" id="userManagementContent" hidden>
+            <section class="user-management-card">
+              <div class="user-management-card-heading">
+                <div><h2>Invite a team member</h2><p>An invitation email will be sent through Supabase Auth.</p></div>
+              </div>
+              <form id="userInviteForm" class="user-invite-form">
+                <label>Email<input id="userInviteEmail" name="email" type="email" maxlength="254" autocomplete="email" required></label>
+                <label>Display name<input id="userInviteName" name="displayName" type="text" maxlength="120" pattern="[^<>\{\}\u0000-\u001F]+" title="Enter 1–120 characters without HTML, braces, or control characters." autocomplete="name" required></label>
+                <label>Role<select id="userInviteRole" name="roleKey" required></select></label>
+                <button class="page-primary-button" id="userInviteSubmit" type="submit">Send invitation</button>
+              </form>
+            </section>
+            <section class="user-management-card">
+              <div class="user-management-card-heading">
+                <div><h2>Team access</h2><p>Role and active-state changes are recorded in the audit log.</p></div>
+                <span id="userDirectoryCount" aria-live="polite"></span>
+              </div>
+              <div class="user-directory-scroll">
+                <table class="user-directory-table">
+                  <thead><tr><th scope="col">Email</th><th scope="col">Display name</th><th scope="col">Role</th><th scope="col">Access</th><th scope="col">Created</th><th scope="col">Action</th></tr></thead>
+                  <tbody id="userDirectoryRows"></tbody>
+                </table>
+              </div>
+              <div class="user-directory-pagination">
+                <button class="website-secondary" id="userDirectoryPrevious" type="button">Previous</button>
+                <span id="userDirectoryPage" aria-live="polite"></span>
+                <button class="website-secondary" id="userDirectoryNext" type="button">Next</button>
+              </div>
+            </section>
+          </div>
+        </section>
+        <footer class="dashboard-footer">© 2026 <strong>RaFFA ADmin.</strong> Designed with <span class="heart">♥</span> by codepsanda.com. All Rights Reserved.</footer>
+      </main>
+    </div>
+    <div class="mobile-backdrop" id="mobileBackdrop" hidden></div>
+    <dialog class="demo-dialog" id="demoDialog">
+      <form method="dialog" id="demoDialogForm">
+        <div class="demo-dialog-heading"><div><p class="page-eyebrow">DEMO ACTION</p><h2 id="demoDialogTitle">Create item</h2></div><button class="demo-dialog-close" type="button" id="demoDialogClose" aria-label="Close dialog">×</button></div>
+        <div class="demo-dialog-fields" id="demoDialogFields"></div>
+        <div class="demo-dialog-actions"><button class="dialog-cancel" type="button" id="demoDialogCancel">Cancel</button><button class="page-primary-button" type="submit">Add to preview</button></div>
+      </form>
+    </dialog>
+    <dialog class="demo-dialog idle-session-dialog" id="idleSessionDialog">
+      <form method="dialog" id="idleSessionForm">
+        <div class="demo-dialog-heading">
+          <div><p class="page-eyebrow">SESSION TIMEOUT</p><h2>Are you still there?</h2></div>
+        </div>
+        <p class="idle-session-copy">Your administrator session will sign out in <strong id="idleSessionCountdown">5:00</strong> due to inactivity.</p>
+        <div class="demo-dialog-actions">
+          <button class="dialog-cancel" type="button" id="idleSessionSignOut">Sign out now</button>
+          <button class="page-primary-button" type="button" id="idleSessionContinue">Continue session</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="demo-dialog admin-step-up-dialog" id="adminStepUpDialog" aria-labelledby="adminStepUpTitle">
+      <form id="adminStepUpForm">
+        <div class="demo-dialog-heading">
+          <div><p class="page-eyebrow">ADDITIONAL VERIFICATION</p><h2 id="adminStepUpTitle">Confirm it’s you</h2></div>
+        </div>
+        <p>Enter your current administrator password and authenticator code. Verification lasts five minutes.</p>
+        <label for="adminStepUpPassword">Password</label>
+        <input id="adminStepUpPassword" type="password" autocomplete="current-password" minlength="12" maxlength="128" required>
+        <label for="adminStepUpCode">Authenticator or recovery code</label>
+        <input id="adminStepUpCode" type="text" autocomplete="one-time-code" inputmode="text"
+          pattern="(?:[0-9]{6}|[A-Z0-9]{5}-[A-Z0-9]{5})" minlength="6" maxlength="11" required>
+        <p class="admin-step-up-status" id="adminStepUpStatus" role="status" aria-live="polite"></p>
+        <div class="demo-dialog-actions">
+          <button class="dialog-cancel" id="adminStepUpCancel" type="button">Cancel</button>
+          <button class="page-primary-button" id="adminStepUpSubmit" type="submit">Verify</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+</body>
+</html>

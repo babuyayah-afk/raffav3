@@ -1,0 +1,129 @@
+#siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#siteHeader .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 78px;
+}
+
+#siteHeader .logo,
+#siteHeader .brand,
+#siteHeader a[aria-label="Home"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+#siteHeader .logo-mark,
+#siteHeader .brand-mark,
+#siteHeader .logo-word,
+#siteHeader .brand-word {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+#siteHeader .primary-nav,
+#siteHeader .page-nav,
+#siteHeader nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+#siteHeader .primary-nav a,
+#siteHeader .page-nav a,
+#siteHeader nav a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.74);
+  text-decoration: none;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+#siteHeader .primary-nav a:hover,
+#siteHeader .page-nav a:hover,
+#siteHeader nav a:hover,
+#siteHeader .primary-nav a.active,
+#siteHeader .page-nav a[aria-current="page"],
+#siteHeader nav a[aria-current="page"] {
+  color: #ffffff;
+}
+
+#siteHeader .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#siteHeader .menu-toggle,
+#siteHeader .icon-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#siteHeader .menu-toggle svg,
+#siteHeader .icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 760px) {
+  #siteHeader .primary-nav,
+  #siteHeader .page-nav,
+  #siteHeader nav {
+    display: none;
+  }
+
+  #siteHeader.nav-open .primary-nav,
+  #siteHeader.nav-open .page-nav,
+  #siteHeader.nav-open nav {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 16px 24px 20px;
+    background: rgba(10, 10, 10, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  #siteHeader.nav-open .primary-nav a,
+  #siteHeader.nav-open .page-nav a,
+  #siteHeader.nav-open nav a {
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  #siteHeader .menu-toggle,
+  #siteHeader .icon-btn {
+    display: inline-flex;
+  }
+}
