@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: rafa-events-development-api
+    runtime: node
+    plan: 0.5c-512mb
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health/live
+    disk:
+      name: rafa-events-development-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: RAFA_ENV
+        value: development
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_ORIGINS
+        value: https://raffaadmindeveloment.netlify.app,https://raffadevelopment.netlify.app
+      - key: DATABASE_PATH
+        value: /var/data/RAFA-events-development.db
+      - key: ADMIN_AUTH_DATABASE_PATH
+        value: /var/data/RAFA-admin-auth-development.db
+      - key: WEBSITE_DATA_PROVIDER
+        value: supabase
+      - key: ADMIN_AUTH_PROVIDER
+        value: supabase
+      - key: SUPABASE_URL
+        value: https://jpitvhgyjsalswjuuwpm.supabase.co
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: RAFA_AUTH_ENCRYPTION_KEY
+        sync: false
+      - key: TURNSTILE_SITE_KEY
+        sync: false
+      - key: TURNSTILE_SECRET_KEY
+        sync: false
+      - key: INQUIRY_FOLLOW_UP_DAYS
+        value: "3"

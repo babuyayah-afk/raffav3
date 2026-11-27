@@ -10,18 +10,13 @@
 //   FRONTEND_ORIGINS, and RAFA_AUTH_ENCRYPTION_KEY
 //   npm start
 const path = require('node:path');
-const environment = process.env.RAFA_ENV || process.env.NODE_ENV || 'development';
-if (!['development', 'production'].includes(environment)) {
-	throw new Error('RAFA_ENV must be development or production.');
-}
-if (process.env.NODE_ENV && process.env.NODE_ENV !== environment) {
-	throw new Error('RAFA_ENV and NODE_ENV must match.');
-}
-process.env.RAFA_ENV = environment;
-process.env.NODE_ENV = environment;
+const { resolveRuntimeEnvironment } = require('./src/config/runtimeEnvironment');
+const { rafaEnvironment, nodeEnvironment } = resolveRuntimeEnvironment();
+process.env.RAFA_ENV = rafaEnvironment;
+process.env.NODE_ENV = nodeEnvironment;
 
 const dotenvResult = require('dotenv').config({
-	path: path.join(__dirname, `.env.${environment}`)
+	path: path.join(__dirname, `.env.${rafaEnvironment}`)
 });
 if (dotenvResult.error && dotenvResult.error.code !== 'ENOENT') throw dotenvResult.error;
 

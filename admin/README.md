@@ -22,3 +22,9 @@ migration has not been applied to the hosted project.
 
 The dashboard's remaining analytics pages are UI previews with sample data.
 See the [dashboard implementation guide](./ADMIN-IMPLEMENTATION-GUIDE.md).
+
+## Separate Netlify admin site
+
+The admin UI is static; authentication and data APIs run on the Express backend. For a separate Netlify admin site, configure the site with base directory `admin`, build command `node scripts/prepare-netlify.js`, publish directory `dist` (relative to the base directory), and leave the Functions directory blank. Set the Netlify build environment variable `RAFA_API_PROXY_TARGET` to the deployed backend's HTTPS origin only, such as `https://api.example.com`. Do not include a path, credentials, query, or trailing route. The build creates a same-origin `/api/*` proxy so the browser's secure `SameSite=Strict` admin session cookie belongs to the Netlify admin site.
+
+On the backend host, set `FRONTEND_ORIGINS` to include the exact admin site origin (for example, `https://your-admin-site.netlify.app`) and the public site origin if it calls the API directly. Keep `RAFA_API_BASE` unset for the admin Netlify site so it uses the same-origin proxy. Configure the public site's `RAFA_API_BASE` separately to the backend HTTPS origin for public inquiry requests. Store Supabase keys and encryption keys only in the backend host's secret settings, and use persistent storage for the backend's SQLite auth/session state. The admin build fails if `RAFA_API_PROXY_TARGET` is missing or invalid; deploy the backend first, then set the Netlify variable and redeploy the admin site.

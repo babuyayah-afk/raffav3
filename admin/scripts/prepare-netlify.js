@@ -28,27 +28,29 @@ const publicFiles = [
   'testimonial-admin.js'
 ];
 
-function getApiBase() {
-  const configured = (process.env.RAFA_API_BASE || '').trim();
-  if (!configured) return '';
+function getApiProxyTarget() {
+  const configured = (process.env.RAFA_API_PROXY_TARGET || '').trim();
+  if (!configured) {
+    throw new Error('Set RAFA_API_PROXY_TARGET to the deployed backend HTTPS origin before building the admin site.');
+  }
 
   let parsed;
   try {
     parsed = new URL(configured);
   } catch {
-    throw new Error('RAFA_API_BASE must be an HTTP(S) API origin.');
+    throw new Error('RAFA_API_PROXY_TARGET must be a valid HTTPS backend origin.');
   }
 
-  if (!['http:', 'https:'].includes(parsed.protocol) ||
+  if (parsed.protocol !== 'https:' ||
       parsed.username || parsed.password || parsed.pathname !== '/' ||
       parsed.search || parsed.hash ||
       ![parsed.origin, `${parsed.origin}/`].includes(configured)) {
-    throw new Error('RAFA_API_BASE must be an HTTP(S) API origin without a path, credentials, query, or fragment.');
+    throw new Error('RAFA_API_PROXY_TARGET must be an HTTPS backend origin without a path, credentials, query, or fragment.');
   }
   return parsed.origin;
 }
 
-const apiBase = getApiBase();
+const apiProxyTarget = getApiProxyTarget();
 const apiBaseMeta = /<meta\s+name=["']rafa-api-base["']\s+content=["'][^"']*["']\s*\/?>/i;
 
 fs.rmSync(outputDirectory, { recursive: true, force: true });
@@ -67,7 +69,7 @@ for (const file of publicFiles) {
     }
     fs.writeFileSync(
       destination,
-      html.replace(apiBaseMeta, `<meta name="rafa-api-base" content="${apiBase}">`),
+      html.replace(apiBaseMeta, '<meta name="rafa-api-base" content="">'),
       'utf8'
     );
   } else {
@@ -77,7 +79,7 @@ for (const file of publicFiles) {
 
 fs.writeFileSync(
   path.join(outputDirectory, '_redirects'),
-  '/ /admin/ 302\n',
+  `/api/* ${apiProxyTarget}/api/:splat 200\n/ /admin/ 302\n`,
   'utf8'
 );
 

@@ -22,6 +22,14 @@ Owners can use the Settings screen at `/admin` to view the paginated administrat
 
 The API exposes `/health/live` for process liveness, `/health/ready` for database readiness, and `/health` as a compatibility alias for liveness.
 
+## Render Development API
+
+The repository-root `render.yaml` prepares a Development API service for the Netlify Development sites. It selects the Development Supabase project while running Node in production mode so HTTPS session cookies are secure. The Render Blueprint also attaches a 1 GB persistent disk for the application and MFA/session SQLite files. Render requires a paid web-service plan for persistent disks; review the plan and disk cost in Render before creating the service. This configuration does not create a service or supply any credentials.
+
+Create a Render Blueprint from the repository and review the service settings before applying it. When prompted, enter the rotated Development project's anon and service-role keys, a unique base64-encoded random 32-byte `RAFA_AUTH_ENCRYPTION_KEY`, and the Cloudflare Turnstile keys in Render's secret fields only. After deployment, copy the service's HTTPS origin to Netlify's admin-site build variable `RAFA_API_PROXY_TARGET`, then redeploy the admin site. The Netlify admin build settings must use base directory `admin`, build command `node scripts/prepare-netlify.js`, publish directory `dist` (relative to `admin`), and no Functions directory.
+
+For the public Development site, set its `RAFA_API_BASE` build variable to the same Render HTTPS origin. Do not set `RAFA_API_BASE` on the Netlify admin site; it uses the same-origin `/api/*` proxy. Verify the admin and public site origins in `FRONTEND_ORIGINS` match the deployed Netlify origins exactly.
+
 ## Development and production separation
 
 The confirmed hosted projects are Development (`jpitvhgyjsalswjuuwpm`) and Production (`orybroticrcobzkxfpzv`). The same versioned migrations define the schema in both projects; the Development environment must use synthetic test records, not copied production customer records. Keep each project's Supabase URL and keys in its own protected environment configuration. Production deployments must set `RAFA_ENV=production`, `NODE_ENV=production`, and the Production project's `SUPABASE_URL` and server-only keys through the hosting provider's secret configuration. Startup checks that the hosted URL matches the selected environment.
